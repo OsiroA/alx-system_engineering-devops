@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#this script delays "Best School" ten times
+
+
+for ((a=0;a<10;a++));
+	do
+		echo "Best School"
+	done
