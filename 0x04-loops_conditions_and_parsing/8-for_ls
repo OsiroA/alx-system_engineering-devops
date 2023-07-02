@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#For ls
+
+
+cont=0
+ls=$(ls)
+for cont in $ls
+do
+	echo "$cont" | cut -d "-" -f2
+done
