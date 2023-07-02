@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-#Thsi script prints its own PID
-echo $$
