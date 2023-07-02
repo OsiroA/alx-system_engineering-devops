@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#This script displays bash script 10 times using the while loop
+
+
+count=0
+while [ $count -le 10 ];
+do
+	echo "Best School"
+	let count+=1
+done
