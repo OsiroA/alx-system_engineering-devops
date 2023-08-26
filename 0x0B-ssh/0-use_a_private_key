@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# USERNAME = "UBUNTU"
+# SERVER_NAME = "292927-web-01"
+# PRIVATE_KEY = "~/.ssh/school"
+ssh -i ~/.ssh/school ubuntu@54.237.88.25
