@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script configures a client file to use a private key
+# and to refuse to authentiacte using a password
+IdentityFile ~/.ssh/school 
+Host 54.237.88.25
+PasswordAuthentication no
