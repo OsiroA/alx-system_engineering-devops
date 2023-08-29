@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This script ill be used to instal nginx web server
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+sudo ufw allow 'Nginx HTTP'
+# an html content that prints Hello World
+echo "Hello World!" > /var/www/html/index.html
+
+# Be sure the NGINX is listening on port 80
+# netstat -tuln | grep ":80"
+sudo service nginx start
