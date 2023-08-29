@@ -6,7 +6,7 @@ sudo apt-get -y install nginx
 
 sudo ufw allow 'Nginx HTTP'
 # an html content that prints Hello World
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/some_page.html
 
 # Be sure the NGINX is listening on port 80
 # netstat -tuln | grep ":80"
