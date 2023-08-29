@@ -2,9 +2,9 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 echo "Hello World!" | tee /var/www/html/index.html
-TEXT="location /redirect_me {\\n return 301 https://www.twitter.com/duke_ibadan;\\n}\\n"
-sudo sed -i "421 $TEXT" /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" | tee /var/www/html/404.html
-CUSTOM="error_page 404 /404.html;\nlocation = /404.html {\nroot /var/www/html;\ninternal;\n}"
-sudo sed -i "/server_name _;/a $CUSTOM" /etc/nginx/sites-available/default
+sudo sed -i "19i rewrite ^/redirect_me https://twitter.com/duke_ibadan permanent;" /etc/nginx/sites-enabled/default
+
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/page_error_404.html
+sudo sed -i '37i error_page 404 /page_error_404.html;\nlocation = /page_error_404.html {\nroot /usr/share/nginx/html; \ninternal;\n}\n' /etc/nginx/sites-enabled/default
+
 sudo service nginx restart
