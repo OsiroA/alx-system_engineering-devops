@@ -1,0 +1,12 @@
+#!/usr/bin/bash env
+
+# this replaces a line with multiple lines with sed
+# i.e the nginx server should be configured to redirect /redirect_me
+# to another page
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo 'Hello World!' > sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+sudo sed -i '37i\rewrite ^/redirect_me return 301 https://www.twitter.com/oosimaxi permanent;' /etc/nginx/sites-enabled/default
+sudo service nginx start
