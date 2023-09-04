@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This installs and configyres HAProxy on my lb-01 server
+# Then congigure it to send traffic to web-01 and web-02 servers
+# This request should be distributwed using a roundrobin algorithm
+
+CONFIG="\\\nlisten appname 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forward for\n\tserver 292927-web-01 54.237.88.25 check\n\tserver 292927-web-02 54.90.40.27 check\n"
+
+sudo apt-get update
+sudo apt install haproxy -y
+sudo chmod 764 /etc/haproxy/
+sudo chmod 764 /etc/haproxy/haproxy.cfg
+
+# this next bit includes roundrobin on my two servers
+sudo sed -i "\$a $CONFIG" /etc/haproxy/haproxy.cfg
+
+sudo service haproxy start
