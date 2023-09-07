@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script configures domainxzones so that www points to my load-balancer IP
+
+printer ()
+{
+	printf "The subdomain %s is a " "$2"
+	dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ printf $4 }'
+	printf " record and points to "
+	dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ printf $5 }'
+	echo ""
+}
+
+if [ -z "$2" ]; then
+	for subdomains in "www" "lb-01" "web-01" "web-02"
+	do
+		printer "$1" "$subdomains"
+	done
+else
+	printer "$1" "$2"
+fi
