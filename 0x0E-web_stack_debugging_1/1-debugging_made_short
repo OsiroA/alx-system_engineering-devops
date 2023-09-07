@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# a shorter veesion of task 0 that ensures nginx is not running as well
+sudo apt-get install -y nginx
+sudo sed -i 's/sites-enabled/sites-available/' /etc/nginx/nginx.conf
+sudo pkill -o nginx
