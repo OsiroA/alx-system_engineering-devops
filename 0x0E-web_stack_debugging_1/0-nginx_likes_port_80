@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script ensures NGINX is running, and that ist is listening on  -port 80 in all of the server's activr IPv4 IPs
+if ! command -v nginx &> dev/null; then
+	echo "Nginx not installed, Installing RN though"
+	sudo apt-get update
+	sudo apt-get install -y nginx
+else
+	echo "Mginx is installed already"
+fi
+sudo sed -i "s/sites-enabled/sites-available/" /etc/nginx/nginx.conf
+if ! sudo nginx -t; then
+	"Nginx config failed, please check your configuration files"
+	exit 1
+fi
+sudo service nginx restart
