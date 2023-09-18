@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This makes the firewall also filter requests not just forward them
+sourcePort=8080
+destinationPort=80
+
+ufw route allow proto tcp from any to any port $sourcePort
+ufw reload
+echo "Port has forwarded from $sourcePort to $destinationPort
