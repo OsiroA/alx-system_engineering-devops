@@ -5,4 +5,4 @@ destinationPort=80
 
 ufw route allow proto tcp from any to any port $sourcePort
 ufw reload
-echo "Port has forwarded from $sourcePort to $destinationPort
+echo "Port has forwarded from $sourcePort to $destinationPort"
