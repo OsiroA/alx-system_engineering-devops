@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# this runs nginx as a less-privileged user incase of hacking
+sed -i 's/user\s*[^;]*;/user nginx;/g' /etc/nginx/nginx.conf
+sed -i 's/listen\s*[^;]*;/listen 8080;/g' /etc/nginx/nginx.conf
+service nginx restart
