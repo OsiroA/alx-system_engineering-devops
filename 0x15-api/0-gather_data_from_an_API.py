@@ -7,28 +7,14 @@ import requests
 import sys
 
 
-def todoList(employee_id):
+   if __name__ == "__main__":
     '''This function does the requested task in the earlier comment'''
-    api_url = 'https://jsonplaceholder.typicode.com/todos?userId={employee_id}'
+    url = "https://jsonplaceholder.typicode.com/"
+    user_id = sys.argv[1]
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    try:
-        
-        response = requests.get(api_url)
-        if response.status_code == 200:
-            todos = response.json()
-            completed_tasks = [todo for todo in todos if todo['completed']]
-            employee_name = todos[0]['user']['name']
-            total_tasks = len(todos)
-            completed_task_count = len(completed_tasks)
-            tasks_left = total_tasks - completed_task_count
-            print('Employee {} is done with tasks ({}/{}):'.format(employee_name, completed_task_count, total_tasks))
-            print('{} has completed {} tasks.'.format(employee_name, completed_task_count))
-            print('{} has {} tasks left to do.'.format(employee_name, tasks_left))
-        else:
-            print("Failed to retrieve data. Status code: {}".format(response.status_code))
-    except requests.exceptions.RequestException as e:
-        print("Error: {}".format(e))
-
-if __name__ == '__main__':
-    employee_id = int(input("Enter Employee ID: "))
-    get_employee_todo_progress(employee_id)
+    completed = [task for task in todos if task.get("completed")]
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
+    [print("\t {}".format(task.get("title"))) for task in completed]
