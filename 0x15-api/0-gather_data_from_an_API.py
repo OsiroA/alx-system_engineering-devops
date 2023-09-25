@@ -7,7 +7,7 @@ import requests
 import sys
 
 
-   if __name__ == "__main__":
+if __name__ == "__main__":
     '''This function does the requested task in the earlier comment'''
     url = "https://jsonplaceholder.typicode.com/"
     user_id = sys.argv[1]
