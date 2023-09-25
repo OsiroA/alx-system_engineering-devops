@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+'''
+This gathers data from an API, and then uses it to creqate a todo
+list progress function
+'''
+
+
+import requests
+import sys
+
+
+def todoList(employee_id):
+    '''This function does the requested task in the earlier comment'''
+    url = "https://jsonplaceholder.typicode.com/"
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            todoData = response.json()
+            print("Employee {} is done with tasks ({}/{})".format()
+        else:
+            print("Failed to
