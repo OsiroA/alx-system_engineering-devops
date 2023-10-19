@@ -1,0 +1,1 @@
+this directory contains tasks on Applicatob Server, organized by ALX and Holberton. one of our previous clones of AirBnB will be set up to our first server, Gunicorn will also be used among other important things in this set of tasks
